@@ -1,0 +1,214 @@
+.gaf-header-main {
+    @media (max-width: $screen-sm-max){
+        &.container{
+            max-width: 100%;
+        }
+    }
+    .gaf-menuToggle {
+        width:100%;
+        input{
+            display: none;
+            @media (max-width: $screen-sm-max) {
+                display: block;
+            }
+        }
+        span{
+            display: none;
+            @media (max-width: $screen-sm-max) {
+                display: block;
+            }
+        }
+        .ml-auto{
+            &.navbar-nav{
+                float: right;
+                @media (max-width: $screen-sm-max) {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    min-height: 768px;
+                    overflow-y: hidden;
+                    flex-direction: column;
+                }
+                li{
+                    a{
+                        font-size: 14px;
+                        font-family: $webfont-demi;
+                        color: $color-white;
+                        padding: 0;
+                        margin: 0 21px;
+                        white-space: nowrap;
+                        position: relative;
+                        @media (max-width: $screen-sm-max) {
+                            font-family: $webfont-medium;
+                            padding: 15px 10px;
+                            color: $color-black;
+                            border-bottom: 1px solid $color-border-primary;
+                            margin: 0;
+                        }
+                        @media (min-width: $screen-md-min) {
+                        &.active{
+                            &:before{
+                                border-bottom: solid 5px $color-primary;
+                                content: "";
+                                position: absolute;
+                                top: 41px;
+                                width: 100%;                       
+                                }
+                            }
+                        }
+                    }
+                    &:last-child{
+                        border-left: 1px solid $color-white;
+                        margin-left: 10px;
+                        padding-left: 10px;
+                        margin-left: 10px;
+                        @media (max-width: $screen-sm-max) {
+                            border-left: none;
+                            margin-left: 0;
+                            padding-left: 0;
+                            margin-left: 0;                             
+                        }
+                        a{
+                            padding-right: 0;
+                            border-bottom: none; 
+                        }
+                    }
+                }
+            }
+        } 
+    }
+    .navbar{
+        .navbar-brand {
+                width:200px;
+                @media (max-width: $screen-sm-max){
+                    width: 150px;
+                }
+        }
+    }   
+}
+.gaf-navbar-sticky {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom:0;
+        z-index: 1030;
+        transition: 0.5s;
+        background: $color-white;
+        height: 70px;
+        &.gaf-fixed-top{
+            @include box-shadow(0 0 15px 0 rgba(0, 0, 0, 0.5));
+        }
+        @media (max-width: $screen-sm-max) {
+            height: 56px;
+        }
+    }
+    .gaf-header-main{
+        padding: 0;
+        .navbar{
+                margin: 0;
+                padding: 13px 0;
+                @media (max-width: $screen-sm-max){
+                    padding: 8px 0;
+                }
+                .gaf-menuToggle {
+                    .ml-auto{
+                        &.navbar-nav{
+                            li{
+                                a{
+                                    color: $color-secondary;
+                                }
+                                &:last-child{
+                                    border-left: 1px solid $color-secondary;
+                                    @media (max-width: $screen-sm-max) {
+                                        border-left:none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }
+
+@media (max-width: $screen-sm-max) {
+#gaf-header-top{
+    background: $color-white;
+}
+.navbar-toggler{
+    display: none;
+}
+.gaf-menuToggle {    
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 25px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 0 !important;
+    input {
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -7px;
+        left: -5px;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+        -webkit-touch-callout: none;
+    }
+    span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin-bottom: 5px;
+        position: relative;
+        background: $color-secondary;
+        border-radius: 3px;
+        z-index: 1;
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), 
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+      &:first-child {
+        transform-origin: 0% 0%;
+      }
+      &:nth-last-child(2) {
+        transform-origin: 0% 100%;
+      }
+    }
+    input:checked ~ span {
+      opacity: 1;
+      transform: rotate(44deg) translate(0, 1px);
+      background: $color-secondary;
+      &:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+      &:nth-last-child(2) {
+        opacity: 1;
+        transform: rotate(-48deg) translate(1px, 0);
+      }
+    }
+  }  
+  .gaf-menu {
+    position: absolute;
+    width: 270px;
+    margin: 14px 0 0 0;
+    background: $color-litewhite;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    right: -40px;
+    li {
+      padding: 0;
+      font-size: 22px;
+    }
+  }  
+  .gaf-menuToggle input:checked ~ ul {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
